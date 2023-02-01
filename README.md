@@ -11,7 +11,7 @@ cd Notifier
 java -jar build/libs/Notifier.jar
 ```
 
-Or just download jar file from CI and execute it
+Or just download jar file from CI, unzip it and execute it
 ```
 java -jar Notifier.jar
 ```
