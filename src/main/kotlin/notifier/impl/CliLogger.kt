@@ -4,10 +4,10 @@ import notifier.api.Logger
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class CliLogger : Logger<String> {
+class CliLogger : Logger<Any> {
     private val dtf: DateTimeFormatter = DateTimeFormatter.ofPattern("dd HH:mm:ss")
 
-    override fun onDataChanged(prev: String?, new: String) {
+    override fun onDataChanged(prev: Any?, new: Any) {
         println("${dtf.format(LocalDateTime.now())}: New best time: $new")
     }
 
