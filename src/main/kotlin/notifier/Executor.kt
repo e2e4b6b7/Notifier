@@ -47,6 +47,8 @@ class Executor<T>(
                         .bodyAsText()
                 }
 
+                logger.onBodyReceived(body)
+
                 if (body == prevBody) continue
                 logger.onBodyChanged(prevBody, body)
                 prevBody = body
@@ -59,8 +61,9 @@ class Executor<T>(
                 prevData = data
             } catch (e: Exception) {
                 logger.onError(e)
+            } finally {
+                Thread.sleep(cooldown)
             }
-            Thread.sleep(cooldown)
         }
     }
 }
