@@ -15,7 +15,8 @@ class DescribeNonEUDrivingLicenseParser : SiteParser<List<LocalDate>> {
             .body()
             .getElementById("sugg_accordion")
             ?.children()
-            .let { it?.asSequence() ?: emptySequence() }
+            .let { it ?: return emptyList() }
+            .asSequence()
             .filter { it.nodeName() == "h3" }
             .map { it.text() }
             .map { date -> date.dropWhile { it != ' ' }.drop(1) }
